@@ -15,7 +15,7 @@
 		<script src="https://unpkg.com/element-ui@2.0.3/lib/index.js"></script>
 		<script src="../common/js/index.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
-		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>q
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_im83trt4w6sqncdi.css">
 	</head>
 
@@ -82,6 +82,18 @@
 			</div>
 
 			<div id="content-list">
+				<li class="goods-item" v-for="(item, index) in goods">
+					<div class="goods-img">
+						<img v-bind:src="item.img" v-bind:alt="item.name">
+						<div class="flag" v-if="item.ishot">热</div>
+					</div>
+					
+					<div class="goods-info">
+						<p class="goods-title">{{ item.name }}</p>
+						<span class="des">{{ item.votes }}人点赞</span>
+						<span class="save" @click="addToCart(item)">+</span>
+					</div>
+				</li>
 				<!--<a>
 					<div class="m_article_img">
 						<img src="../common/image/test.png">
@@ -120,7 +132,17 @@
 					selected: '',
 					value: '',
 					popupVisible: false,
-					defaultResult: ['Apple', 'Banana', 'Orange', 'Durian', 'Lemon', 'Peach', 'Cherry', 'Berry', 'Core', 'Fig', 'Haw', 'Melon', 'Plum', 'Pear', 'Peanut', 'Other']
+					defaultResult: ['Apple', 'Banana', 'Orange', 'Durian', 'Lemon', 'Peach', 'Cherry', 'Berry', 'Core', 'Fig', 'Haw', 'Melon', 'Plum', 'Pear', 'Peanut', 'Other'],
+					goods: [{
+			            name: 'Beats EP头戴式耳机',
+			            votes: 1872,
+			            ishot: true,
+			            img: 'http://img11.360buyimg.com/n1/s528x528_jfs/t3109/194/2435573156/46587/e0e867ac/57e10978N87220944.jpg!q70.jpg'
+			        }, {
+			            name: '雀巢（Nestle）高钙成人奶粉',
+			            votes: 2374,
+			            img: 'http://m.360buyimg.com/babel/jfs/t5197/28/400249159/97561/304ce550/58ff0dbeN88884779.jpg!q50.jpg.webp'
+			        }]
 				}
 			},
 			computed: {
