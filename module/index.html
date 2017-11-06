@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+
+		<title>神器show</title>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.0.3/lib/theme-chalk/index.css">
+		<link rel="stylesheet" type="text/css" href="../common/css/index.css" />
+		<script src="../common/js/vue.js"></script>
+		<script src="https://unpkg.com/element-ui@2.0.3/lib/index.js"></script>
+		<script src="../common/js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_im83trt4w6sqncdi.css">
+	</head>
+
+	<body>
+		<div id="app">
+
+			<div id="header">
+				<mt-header title="title" style="background: #f33;height: 50px;font-size: 20px;max-width:750px;width:100%;">
+					<a slot="left" href="javascript:window.history.go(-1)">
+						<mt-button icon="back"></mt-button>
+					</a>
+					<mt-button icon="more" slot="right" @click.native="show"></mt-button>
+				</mt-header>
+
+				<mt-popup v-model="popupVisible" position="bottom" popup-transition="popup-fade" style="top:60px;width:95%">
+					<ul id="title-list">
+						<li>
+							<i class="iconfont icon-home"></i>首页
+						</li>
+						<li>
+							<i class="iconfont icon-home"></i>首页
+						</li>
+						<li>
+							<i class="iconfont icon-home"></i>首页
+						</li>
+						<li>
+							<i class="iconfont icon-home"></i>首页
+						</li>
+						<li>
+							<i class="iconfont icon-home"></i>首页
+						</li>
+				</mt-popup>
+
+			</div>
+
+			<!--todo: 
+				1. search和header颜色一致
+				2. 选择search调到新页面
+				3. 输出结果格式
+				4. 输出结果添加链接
+			-->
+			<div id="search">
+				<mt-search v-model="value">
+					<!--<mt-cell v-for="item in filterResult" :title="item" :value="item">
+					</mt-cell>-->
+				</mt-search>
+			</div>
+
+			<div id="swiper">
+				<mt-swipe :auto="4000">
+					<mt-swipe-item>
+						<img src="../common/image/test.png" @click="handleClick" />
+						<span class="swiper-title">A</span>
+					</mt-swipe-item>
+					<mt-swipe-item>
+						<img src="../common/image/test.png" @click="handleClick" />
+						<span class="swiper-title">B</span>
+					</mt-swipe-item>
+					<mt-swipe-item>
+						<img src="../common/image/test.png" @click="handleClick" />
+						<span class="swiper-title">C</span>
+					</mt-swipe-item>
+				</mt-swipe>
+			</div>
+
+			<div id="content-list">
+				<!--<a>
+					<div class="m_article_img">
+						<img src="../common/image/test.png">
+					</div>
+					<div class="m_article_info">
+						<div class="m_article_title">
+							<span>{{item.title}}</span>
+						</div>
+						<div class="m_article_desc ">
+							<div class="m_article_desc_l">
+								<span class="m_article_channel">{{item.source}}</span>
+								<span class="m_article_time">  {{item.ptime}}</span>
+							</div>
+
+						</div>
+					</div>
+				</a>-->
+			</div>
+
+			<!--<div id="navigate">
+				<mt-navbar v-model="selected">
+					<mt-tab-item id="1">选项一</mt-tab-item>
+					<mt-tab-item id="2">选项二</mt-tab-item>
+					<mt-tab-item id="3">选项三</mt-tab-item>
+				</mt-navbar>
+			</div>-->
+
+		</div>
+	</body>
+
+	<script>
+		new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					selected: '',
+					value: '',
+					popupVisible: false,
+					defaultResult: ['Apple', 'Banana', 'Orange', 'Durian', 'Lemon', 'Peach', 'Cherry', 'Berry', 'Core', 'Fig', 'Haw', 'Melon', 'Plum', 'Pear', 'Peanut', 'Other']
+				}
+			},
+			computed: {
+				filterResult: function() {
+					return this.defaultResult.slice(0, 4);
+				}
+			},
+			methods: {
+
+				//辅助函数
+				isExist: function(v) {
+					return new RegExp(this.value, 'i').test(v);
+				},
+
+				//响应函数
+				show: function() {
+					this.popupVisible = true;
+				},
+				handleSearch: function(value) {
+					return this.defaultResult[0];
+				},
+
+				handleClick: function() {
+					return this.$toast("click the banner");
+				}
+			}
+		})
+	</script>
+
+	<style type="text/css">
+		/*body,
+		html {
+			margin: 5;
+			padding: 5;
+		}*/
+		/*.headerbar {
+			width: 100%;
+			position: relative;
+			height: 50px;
+			z-index: 999;
+			max-width: 750px;
+			margin: 0 auto;
+		}*/
+		
+		#header {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 50px;
+		}
+		
+		#title-list {
+			max-width: 750px;
+			margin: 0 auto;
+			width: 100%;
+		}
+		
+		#title-list li a {
+			color: #666;
+			font-size: 14px;
+		}
+		/*#title-list li a.router-link-active {
+			color: red;
+		}*/
+		
+		#title-list li i {
+			display: block;
+			font-size: 30px;
+		}
+		
+		#search {
+			width: 100%;
+			height: 40px;
+		}
+		
+		#swiper {
+			width: 100%;
+			height: 200px;
+		}
+		
+		#swiper img {
+			width: 100%;
+			height: 160px;
+		}
+		
+		#swiper span {
+			position: absolute;
+			left: 50%;
+			bottom: 30px;
+			color: #2C3E50;
+		}
+	</style>
+
+</html>

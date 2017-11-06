@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>gcamp</name>
+<<<<<<< HEAD
+	<comment></comment>
+=======
+	<comment>Create By HBuilder</comment>
+>>>>>>> 0ead75fabfb54ebb05b3b578b4e21013f1d8d485
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.aptana.ide.core.unifiedBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.aptana.projects.webnature</nature>
+	</natures>
+	<filteredResources>
+		<filter>
+<<<<<<< HEAD
+			<id>1509934344664</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-node_modules</arguments>
+=======
+			<id>1509677326034</id>
+			<name></name>
+			<type>10</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.orFilterMatcher</id>
+				<arguments>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-bin</arguments>
+					</matcher>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-setting</arguments>
+					</matcher>
+				</arguments>
+>>>>>>> 0ead75fabfb54ebb05b3b578b4e21013f1d8d485
+			</matcher>
+		</filter>
+	</filteredResources>
+</projectDescription>
